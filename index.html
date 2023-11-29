@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Wellcome</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: aliceblue;
+        }
+
+        #texto-maquina-escrever {
+            font-size: 24px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #333;
+            animation: piscar 0.7s infinite alternate;
+        }
+
+        @keyframes piscar {
+            from, to {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="texto-maquina-escrever"></div>
+
+    <script>
+        // Lista de palavras para a máquina de escrever
+        var palavras = ["Bem-vindo(a)!", "AIB"];
+
+        // Função para máquina de escrever
+        function maquinaEscrever(texto, elemento, intervalo, callback) {
+            var i = 0;
+            var interval = setInterval(function () {
+                elemento.innerHTML += texto.charAt(i);
+                i++;
+                if (i > texto.length) {
+                    clearInterval(interval);
+                    callback(); // Chama a função de callback após o efeito de máquina de escrever
+                }
+            }, intervalo);
+        }
+
+        // Redireciona para o portfólio após o efeito de máquina de escrever
+        function redirecionarParaPortfolio() {
+            setTimeout(function () {
+                window.location.href = "AIB.html"; // Substitua pelo link real do seu portfólio
+            }, 1000); // Tempo de espera após o efeito de máquina de escrever (1 segundo neste exemplo)
+        }
+
+        // Inicia a máquina de escrever com as palavras
+        var elementoTexto = document.getElementById('texto-maquina-escrever');
+        var indexPalavra = 0;
+
+        function iniciarMaquinaEscrever() {
+            elementoTexto.innerHTML = '';
+            maquinaEscrever(palavras[indexPalavra], elementoTexto, 100, function () {
+                indexPalavra++;
+                if (indexPalavra < palavras.length) {
+                    setTimeout(iniciarMaquinaEscrever, 1000); // Tempo de espera entre as palavras (1 segundo neste exemplo)
+                } else {
+                    redirecionarParaPortfolio(); // Redireciona para o portfólio após a conclusão
+                }
+            });
+        }
+
+        iniciarMaquinaEscrever();
+    </script>
+
+</body>
+</html>

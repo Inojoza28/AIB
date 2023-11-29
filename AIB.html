@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <title>AIB</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Seu Gerenciamento Financeiro Pessoal AIB</h1>
+            <div id="balance">Saldo Atual: R$0.00</div>
+        </header>
+        <section id="input-section">
+            <div class="input-group">
+                <label for="income">Renda Mensal:</label>
+                <input type="number" id="income" placeholder="Informe sua renda">
+            </div>
+            <div class="input-group">
+                <label for="expense">Despesas Mensais:</label>
+                <input type="number" id="expense" placeholder="Informe suas despesas">
+            </div>
+            <button onclick="calculateBalance()">Calcular Saldo</button>
+        </section>
+        <section id="result-section">
+            <div class="result-item">
+                <h2>Resumo</h2>
+                <p id="income-display">Renda Mensal: R$0.00</p>
+                <p id="expense-display">Despesas Mensais: R$0.00</p>
+                <canvas id="balanceChart" width="400" height="200"></canvas>
+            </div>
+            <div class="result-item">
+                <h2>Sugestões</h2>
+                <p id="suggestion">--</p>
+            </div>
+        </section>
+    </div>
+<br>
+<br>
+    <script src="script.js"></script>
+</body>
+</html>
