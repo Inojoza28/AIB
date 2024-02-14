@@ -21,7 +21,7 @@ body{
     font-size: 16px;
     max-width: 43.753m;
     margin: 1em auto;
-    margin-top: 90px;
+    margin-top: 75px;
 }
 
 .container{
@@ -191,6 +191,7 @@ header {
     margin-left: 25px;
     color: #6FAE60;
     text-align: center;
+
   }
   
   .social-links {
@@ -493,4 +494,15 @@ a{
     footer p{
         font-size: 13px;
     }
+}
+
+
+
+
+.gerenciamento{
+    text-align: center;
+    font-size: 21px;
+    margin-top: 20px;
+    color: #e3e4e7;
+    margin-bottom: 40px;
 }
