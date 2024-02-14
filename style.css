@@ -180,6 +180,13 @@ body{
         grid-template-columns: 1fr;
         gap: 1em;
     }
+    .gerenciamento{
+        text-align: center;
+        font-size: 19px;
+        margin-top: 20px;
+        color: #e3e4e7;
+        margin-bottom: 40px;
+    }
 }
 
 
