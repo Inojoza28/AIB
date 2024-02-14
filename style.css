@@ -187,6 +187,7 @@ body{
         color: #e3e4e7;
         margin-bottom: 40px;
     }
+
 }
 
 
@@ -446,6 +447,10 @@ header .info-text .scroll::before{
     }
 
     header .info-text h3{
+        font-size: 1.1rem;
+    }
+
+    header .info-text p{
         font-size: 1.1rem;
     }
 
