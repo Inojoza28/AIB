@@ -446,9 +446,9 @@ header .info-text .scroll::before{
 .scroll-top{
     font-size: 14px;
 }
-.scroll{
-    margin-top: 20px;
-}
+.info-text h1, .info-text p {
+    margin: 4px 5px; /* Ajuste de margem para deixar a frase mais próxima do título */
+  }
 
 }
 
