@@ -446,6 +446,9 @@ header .info-text .scroll::before{
 .scroll-top{
     font-size: 14px;
 }
+.scroll{
+    margin-top: 20px;
+}
 
 }
 
