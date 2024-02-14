@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>AIB </title>
+</head>
+
+<body>
+
+      <header>
+        <div id="particles"><canvas class="particles-js-canvas-el" width="1431" height="919" style="width: 100%; height: 100%;"></canvas></div>
+        <div class="info-text">
+            <h1 class="aib">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+                  <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                  <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
+                </svg> AI₿
+              </h1>
+              <p class="frase">Planejar o orçamento é fundamental para alcançar objetivos financeiros.</p>
+            <a href="#money" class="scroll"><i class="bx bxs-down-arrow"></i></a>
+        </div>
+    </header>
+
+
+    <button class="scroll-top" onclick="scrollToTop()">
+        <i class='bx bxs-up-arrow'></i>
+    </button>
+
+
+
+    <div class="wrapper">
+        <div class="container">
+            <div class="sub-container">
+                <div class="total-amount-container">
+                    <h3 id="money">Orçamento</h3>
+                    <p class="hide error" id="budget-error">
+                        O valor não pode estar vazio ou negativo!
+                    </p>
+                    <input type="number" id="total-amount" placeholder="Insira o valor total">
+                    <button class="submit" id="total-amount-button">
+                        Definir orçamento
+                    </button>
+                </div>
+
+                <div class="user-amount-container">
+                    <h3>Despesas</h3>
+                    <p class="hide error" id="product-title-error">
+                        Os valores não podem ficar vazios
+                    </p>
+                    <input type="text" class="product-title" id="product-title" placeholder="Insira o título do produto">
+                    <input type="number" id="user-amount" placeholder="Insira o custo do produto">
+                    <button class="submit" id="check-amount">Verifique o valor</button>
+                </div>
+            </div>
+
+            <div class="output-container flex-space">
+                <div>
+                    <p>Orçamento total</p>
+                    <span id="amount">
+                        0
+                    </span>
+                </div>
+                <div>
+                    <p>Despesas</p>
+                    <span id="expenditure-value">
+                        0
+                    </span>
+                </div>
+                <div>
+                    <p>Equilíbrio</p>
+                    <span id="balance-amount">
+                        0
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="list">
+            <h3>Lista de despesas</h3>
+            <div class="list-container" id="list"></div>
+        </div>
+
+    </div>
+<br><br><br><br><br>
+
+
+<footer>
+    <div class="socials">
+        <a href="https://www.facebook.com/seufacebook" target="_blank"><i class='bx bxl-facebook-square'></i></a>
+        <a href="https://www.instagram.com/carlos.gabriiel/" target="_blank"><i class='bx bxl-instagram'></i></a>
+        <a href="https://github.com" target="_blank"><i class='bx bxl-github'></i></a>
+        <a href="https://github.com/Inojoza28" target="_blank"><i class='bx bxl-linkedin-square'></i></a>
+    </div>
+    <p>Email para contato: carlosginojoza@gmail.com</p><br>
+    <p>Copyright AIB ©2024, todos os direitos reservados.</p>
+</footer>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
