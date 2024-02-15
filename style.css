@@ -239,7 +239,7 @@ header {
 header{
     width: 100%;
     height: 100vh;
-    background:linear-gradient(to bottom, #044C33,#115841,#216953,#0e0f16);
+    background:linear-gradient(to bottom, #044C33,#115841,#216953,#EAEAEA);
     color: #fff;
 }
 
