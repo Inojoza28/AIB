@@ -10,6 +10,7 @@ const amount = document.getElementById("amount");
 const expenditureValue = document.getElementById("expenditure-value");
 const balanceValue = document.getElementById("balance-amount");
 const list = document.getElementById("list");
+const suggestions = document.getElementById("suggestions"); // Adicionado para referenciar as orientações diretamente
 let tempAmount = 0;
 
 // Set Budget Functions
@@ -23,7 +24,7 @@ totalAmountButton.addEventListener("click", () => {
         errorMessage.classList.add("hide");
         // Set budget
         amount.innerHTML = tempAmount.toFixed(2); // Mostrar o valor com duas casas decimais
-        balanceValue.innerText = (tempAmount - parseFloat(expenditureValue.innerText)).toFixed(2); // Atualizar com duas casas decimais
+        updateBalance(); // Atualiza o saldo
         // Clear input
         totalAmount.value = "";
     }
@@ -42,8 +43,6 @@ const disableButtons = (bool) => {
 
 const modifyElement = (element, edit = false) => {
     let parentDiv = element.parentElement;
-    let currentBalance = parseFloat(balanceValue.innerText);
-    let currentExpense = parseFloat(expenditureValue.innerText);
     let parentAmount = parseFloat(parentDiv.querySelector(".amount").innerText);
     if (edit) {
         let parentText = parentDiv.querySelector(".product").innerText;
@@ -52,14 +51,21 @@ const modifyElement = (element, edit = false) => {
         disableButtons(true);
     }
 
-    balanceValue.innerText = (currentBalance + parentAmount).toFixed(2); // Atualizar com duas casas decimais
-    expenditureValue.innerText = (currentExpense - parentAmount).toFixed(2); // Atualizar com duas casas decimais
     parentDiv.remove();
+
+    updateBalance(); // Atualiza o saldo
+    updateSuggestions(); // Atualiza as orientações
 };
 
 // Create list function
 
 const listCreator = (expenseName, expenseValue) => {
+    if (tempAmount === 0) {
+        // Verifica se o valor do orçamento está definido
+        errorMessage.classList.remove("hide");
+        return;
+    }
+
     let subListContent = document.createElement("div");
     subListContent.classList.add("sublist-content", "flex-space");
     list.appendChild(subListContent);
@@ -78,36 +84,108 @@ const listCreator = (expenseName, expenseValue) => {
     });
     subListContent.appendChild(editButton);
     subListContent.appendChild(deleteButton);
+
+    updateBalance(); // Atualiza o saldo
+    updateSuggestions(); // Atualiza as orientações
+
     document.getElementById("list").appendChild(subListContent);
+
+    // Limpa os campos de digitação da despesa e do valor
+    productTitle.value = "";
+    userAmount.value = "";
 };
 
-// Add expenses function
+// Função para atualizar o saldo e os valores relacionados
+const updateBalance = () => {
+    let totalExpenses = 0;
+    let listItems = document.querySelectorAll(".sublist-content");
+    listItems.forEach((item) => {
+        totalExpenses += parseFloat(item.querySelector(".amount").innerText);
+    });
+    expenditureValue.innerText = totalExpenses.toFixed(2); // Atualizar com duas casas decimais
 
+    let totalBalance = tempAmount - totalExpenses;
+    balanceValue.innerText = totalBalance.toFixed(2); // Atualizar com duas casas decimais
+};
+
+// Função para atualizar as orientações
+const updateSuggestions = () => {
+    let totalExpenses = parseFloat(expenditureValue.innerText);
+    let totalBalance = parseFloat(balanceValue.innerText);
+
+    // Verifica se o saldo ficou negativo
+    if (totalBalance < 0) {
+        // Se o saldo for negativo, exibe uma orientação para parar de gastar e revisar os gastos
+        suggestions.innerText = "Seu saldo ficou negativo. É hora de parar de gastar e revisar seus gastos para se ajustar ao orçamento.";
+        return;
+    }
+
+    // Verifica se o orçamento está zerado
+    if (totalBalance === 0) {
+        // Calcula o valor da parcela
+        let installmentAmount = (totalExpenses / 12).toFixed(2);
+        // Exibe a mensagem de saldo zerado com sugestão de parcelamento
+        suggestions.innerText = `Seu saldo está zerado. Considere economizar mais nas suas futuras despesas, use um parcelamento para não se prejudicar. Valor da parcela em 12x: R$ ${installmentAmount}`;
+        return;
+    }
+
+    // Verifica se a lista está vazia
+    if (list.children.length === 0) {
+        // Se a lista estiver vazia, limpa as orientações
+        suggestions.innerText = "";
+        return;
+    }
+
+    // Verifica se o total de despesas está nos últimos 20% do orçamento
+    let twentyPercent = tempAmount * 0.2;
+    if (totalExpenses >= (tempAmount - twentyPercent)) {
+        // Mostra orientações sobre controlar gastos ou parcelamento
+        suggestions.innerText = "Você está nos últimos 20% do seu orçamento. Considere controlar mais os gastos ou utilizar o parcelamento para evitar problemas financeiros.";
+
+        // Opções de parcelamento
+        if (totalExpenses > totalBalance) {
+            let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12); // Limita o número de parcelas a 12 e arredonda para baixo
+            let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
+            let suggestionText = `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} cada.`;
+
+            // Verifica se já há sugestões exibidas
+            let existingSuggestions = suggestions.innerText;
+            if (existingSuggestions !== "") {
+                // Se já houver sugestões, adiciona a nova sugestão em uma nova linha
+                suggestions.innerText += "\n" + suggestionText;
+            } else {
+                // Se não houver sugestões, exibe a nova sugestão normalmente
+                suggestions.innerText = suggestionText;
+            }
+        }
+    } else if (totalExpenses >= tempAmount / 2) {
+        // Adiciona uma orientação quando o orçamento passa da metade
+        suggestions.innerText = "Cuidado! Você já gastou mais da metade do seu orçamento. Continue acompanhando seus gastos para não exceder o limite.";
+    } else {
+        // Limpa as sugestões se não estiver nos últimos 20% do orçamento
+        suggestions.innerText = "";
+    }
+};
+
+// Event Listener for checking and adding expenses
 checkAmountButton.addEventListener("click", () => {
     // Check empty
     if (!userAmount.value || !productTitle.value) {
         productTitleError.classList.remove("hide");
         return false;
     }
-    // Enable buttons
-    disableButtons(false);
+
     // Expense
     let expenditure = parseFloat(userAmount.value);
-    // Total expense (existing + new)
-    let sum = parseFloat(expenditureValue.innerText) + expenditure;
-    expenditureValue.innerText = sum.toFixed(2); // Atualizar com duas casas decimais
-    // Total balance = budget - total expense
-    const totalBalance = (tempAmount - sum).toFixed(2); // Atualizar com duas casas decimais
-    balanceValue.innerText = totalBalance;
+
     // Create list
     listCreator(productTitle.value, expenditure.toFixed(2)); // Atualizar com duas casas decimais
-    // Clear inputs
-    productTitle.value = "";
-    userAmount.value = "";
 });
 
 
-// Inicio
+
+
+//Começo do codígo da animação de Inicio
 
 particlesJS("particles", {
     particles: {
@@ -199,3 +277,6 @@ window.addEventListener('scroll', function () {
         scrollTopButton.style.display = 'none';
     }
 });
+
+//Fim do codígo da animação de Inicio
+

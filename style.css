@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
 html{
     scroll-behavior: smooth;
 }
-
 *{
     padding: 0;
     margin: 0;
@@ -201,14 +199,6 @@ header {
    
   }
   
-  .aib {
-    font-size: 24px; /* Tamanho da fonte do nome */
-    margin-left: 25px;
-    color: #6FAE60;
-    text-align: center;
-
-  }
-  
   .social-links {
     display: flex;
     margin-right: 40px;
@@ -226,16 +216,21 @@ header {
   }
 
 
-.frase{
+
+.aib {
+    font-size: 24px;
+    margin-bottom: 6px; /* Ajuste a margem inferior conforme necessário */
+    color: #6FAE60;
     text-align: center;
-    margin-top: 50px;
-    margin-left: 18px;
-    font-size: 21px;
-text-align: center;
-color: #ccc;
 }
 
-
+.frase {
+    text-align: center;
+    margin-top: 5px; /* Ajuste a margem superior conforme necessário */
+    margin-left: 21px;
+    font-size: 21px;
+    color: #ccc;
+}
 
 
 /* header */
@@ -244,7 +239,7 @@ color: #ccc;
 header{
     width: 100%;
     height: 100vh;
-    background:linear-gradient(to bottom, #044C33,#115841,#216953,#EAEAEA);
+    background:linear-gradient(to bottom, #044C33,#115841,#216953,#0e0f16);
     color: #fff;
 }
 
@@ -516,3 +511,22 @@ a{
 }
 
 
+.orientations {
+    background-color: #fff;
+    padding: 1.8em 1.2em;
+    box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+    border-radius: 0.6em;
+    margin-top: 2em; /* Adicionando margem superior para separar das outras seções */
+}
+
+.orientations h3 {
+    color: #363d55;
+    font-weight: 500;
+    margin-bottom: 0.6em;
+}
+
+.orientations p {
+    color: #414a67;
+    font-size: 16px; /* Ajuste do tamanho da fonte conforme necessário */
+    line-height: 1.6; /* Espaçamento entre linhas */
+}
