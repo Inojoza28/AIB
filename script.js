@@ -10,23 +10,25 @@ const amount = document.getElementById("amount");
 const expenditureValue = document.getElementById("expenditure-value");
 const balanceValue = document.getElementById("balance-amount");
 const list = document.getElementById("list");
-const suggestions = document.getElementById("suggestions"); // Adicionado para referenciar as orientações diretamente
+const suggestions = document.getElementById("suggestions"); 
+const planodeacaoContent = document.getElementById("planodeacao-content"); // Nova adição
 let tempAmount = 0;
 
 // Set Budget Functions
 
 totalAmountButton.addEventListener("click", () => {
     tempAmount = parseFloat(totalAmount.value);
-    // Bad input
     if (isNaN(tempAmount) || tempAmount < 0) {
         errorMessage.classList.remove("hide");
     } else {
         errorMessage.classList.add("hide");
-        // Set budget
-        amount.innerHTML = tempAmount.toFixed(2); // Mostrar o valor com duas casas decimais
-        updateBalance(); // Atualiza o saldo
-        // Clear input
+        amount.innerHTML = tempAmount.toFixed(2);
+        updateBalance();
         totalAmount.value = "";
+        planodeacaoContent.classList.remove("hide"); // Mostra a mensagem de economizar 20%
+        let savingAmount = (tempAmount * 0.2).toFixed(2); // Calcula o valor a economizar
+        planodeacaoContent.innerText = `- Economize R$ ${savingAmount} (20% do seu orçamento inicial) para garantir sua segurança financeira.`; // Mostra o valor a economizar na mensagem
+        suggestions.innerText = ""; // Limpa as sugestões
     }
 });
 
@@ -47,21 +49,20 @@ const modifyElement = (element, edit = false) => {
     if (edit) {
         let parentText = parentDiv.querySelector(".product").innerText;
         productTitle.value = parentText;
-        userAmount.value = parentAmount.toFixed(2); // Mostrar o valor com duas casas decimais
+        userAmount.value = parentAmount.toFixed(2); 
         disableButtons(true);
     }
 
     parentDiv.remove();
 
-    updateBalance(); // Atualiza o saldo
-    updateSuggestions(); // Atualiza as orientações
+    updateBalance(); 
+    updateSuggestions(); 
 };
 
 // Create list function
 
 const listCreator = (expenseName, expenseValue) => {
     if (tempAmount === 0) {
-        // Verifica se o valor do orçamento está definido
         errorMessage.classList.remove("hide");
         return;
     }
@@ -85,12 +86,11 @@ const listCreator = (expenseName, expenseValue) => {
     subListContent.appendChild(editButton);
     subListContent.appendChild(deleteButton);
 
-    updateBalance(); // Atualiza o saldo
-    updateSuggestions(); // Atualiza as orientações
+    updateBalance(); 
+    updateSuggestions(); 
 
     document.getElementById("list").appendChild(subListContent);
 
-    // Limpa os campos de digitação da despesa e do valor
     productTitle.value = "";
     userAmount.value = "";
 };
@@ -102,10 +102,10 @@ const updateBalance = () => {
     listItems.forEach((item) => {
         totalExpenses += parseFloat(item.querySelector(".amount").innerText);
     });
-    expenditureValue.innerText = totalExpenses.toFixed(2); // Atualizar com duas casas decimais
+    expenditureValue.innerText = totalExpenses.toFixed(2); 
 
     let totalBalance = tempAmount - totalExpenses;
-    balanceValue.innerText = totalBalance.toFixed(2); // Atualizar com duas casas decimais
+    balanceValue.innerText = totalBalance.toFixed(2); 
 };
 
 // Função para atualizar as orientações
@@ -113,75 +113,55 @@ const updateSuggestions = () => {
     let totalExpenses = parseFloat(expenditureValue.innerText);
     let totalBalance = parseFloat(balanceValue.innerText);
 
-    // Verifica se o saldo ficou negativo
     if (totalBalance < 0) {
-        // Se o saldo for negativo, exibe uma orientação para parar de gastar e revisar os gastos
         suggestions.innerText = "Seu saldo ficou negativo. É hora de parar de gastar e revisar seus gastos para se ajustar ao orçamento.";
         return;
     }
 
-    // Verifica se o orçamento está zerado
     if (totalBalance === 0) {
-        // Calcula o valor da parcela
         let installmentAmount = (totalExpenses / 12).toFixed(2);
-        // Exibe a mensagem de saldo zerado com sugestão de parcelamento
         suggestions.innerText = `Seu saldo está zerado. Considere economizar mais nas suas futuras despesas, use um parcelamento para não se prejudicar. Valor da parcela em 12x: R$ ${installmentAmount}`;
         return;
     }
 
-    // Verifica se a lista está vazia
     if (list.children.length === 0) {
-        // Se a lista estiver vazia, limpa as orientações
         suggestions.innerText = "";
         return;
     }
 
-    // Verifica se o total de despesas está nos últimos 20% do orçamento
     let twentyPercent = tempAmount * 0.2;
     if (totalExpenses >= (tempAmount - twentyPercent)) {
-        // Mostra orientações sobre controlar gastos ou parcelamento
         suggestions.innerText = "Você está nos últimos 20% do seu orçamento. Considere controlar mais os gastos ou utilizar o parcelamento para evitar problemas financeiros.";
 
-        // Opções de parcelamento
         if (totalExpenses > totalBalance) {
-            let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12); // Limita o número de parcelas a 12 e arredonda para baixo
+            let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
             let suggestionText = `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} cada.`;
 
-            // Verifica se já há sugestões exibidas
             let existingSuggestions = suggestions.innerText;
             if (existingSuggestions !== "") {
-                // Se já houver sugestões, adiciona a nova sugestão em uma nova linha
                 suggestions.innerText += "\n" + suggestionText;
             } else {
-                // Se não houver sugestões, exibe a nova sugestão normalmente
                 suggestions.innerText = suggestionText;
             }
         }
     } else if (totalExpenses >= tempAmount / 2) {
-        // Adiciona uma orientação quando o orçamento passa da metade
         suggestions.innerText = "Cuidado! Você já gastou mais da metade do seu orçamento. Continue acompanhando seus gastos para não exceder o limite.";
     } else {
-        // Limpa as sugestões se não estiver nos últimos 20% do orçamento
         suggestions.innerText = "";
     }
 };
 
 // Event Listener for checking and adding expenses
 checkAmountButton.addEventListener("click", () => {
-    // Check empty
     if (!userAmount.value || !productTitle.value) {
         productTitleError.classList.remove("hide");
+        productCostError.classList.remove("hide");
         return false;
     }
-
-    // Expense
     let expenditure = parseFloat(userAmount.value);
-
-    // Create list
-    listCreator(productTitle.value, expenditure.toFixed(2)); // Atualizar com duas casas decimais
+    listCreator(productTitle.value, expenditure.toFixed(2));
 });
-
 
 
 
@@ -280,3 +260,26 @@ window.addEventListener('scroll', function () {
 
 //Fim do codígo da animação de Inicio
 
+
+
+// // Array de frases
+// var frases = [
+//     "A liberdade financeira não é a ausência de dívidas, mas a capacidade de viver a vida que você deseja. <br><br> - Grant Sabatier",
+//     "Planejar o futuro não é adivinhar o que vai acontecer, mas criar o que você deseja que aconteça. <br><br> - Peter Drucker",
+//     "Cada centavo que você economiza hoje é um centavo que você não precisa trabalhar para ganhar amanhã. <br><br> - J. L. Collins",
+//     "O sucesso é a soma de pequenos esforços repetidos dia após dia. - Robert Collier"
+// ];
+
+// function escolherFrase() {
+//     var index = Math.floor(Math.random() * frases.length);
+//     return frases[index];
+// }
+
+// function atualizarFrase() {
+//     var frase = escolherFrase();
+//     document.getElementById("frase").innerHTML = frase;
+// }
+
+// window.onload = atualizarFrase;
+
+// // fim do Array de frases

@@ -21,6 +21,21 @@ body{
     color: #e3e4e7;
     margin-bottom: 40px;
 }
+
+.aib {
+    font-size: 24px;
+    margin-bottom: 6px; /* Ajuste a margem inferior conforme necessário */
+    color: #6FAE60;
+    text-align: center;
+}
+
+.frase {
+    text-align: center;
+    margin-top: 5px; /* Ajuste a margem superior conforme necessário */
+    margin-left: 21px;
+    font-size: 21px;
+    color: #ccc;
+}
 .wrapper {
     width: 90%;
     font-size: 16px;
@@ -216,21 +231,6 @@ header {
   }
 
 
-
-.aib {
-    font-size: 24px;
-    margin-bottom: 6px; /* Ajuste a margem inferior conforme necessário */
-    color: #6FAE60;
-    text-align: center;
-}
-
-.frase {
-    text-align: center;
-    margin-top: 5px; /* Ajuste a margem superior conforme necessário */
-    margin-left: 21px;
-    font-size: 21px;
-    color: #ccc;
-}
 
 
 /* header */
@@ -467,6 +467,8 @@ header .info-text .scroll::before{
 
 }
 
+/* fim do header */
+
 
 /* footer */
 
@@ -510,6 +512,9 @@ a{
     }
 }
 
+/* fim footer */
+
+/* caixinha orientação e plano de ação */
 
 .orientations {
     background-color: #fff;
@@ -556,3 +561,144 @@ a{
     font-size: 16px; /* Ajuste do tamanho da fonte conforme necessário */
     line-height: 1.6; /* Espaçamento entre linhas */
 }
+
+
+/* fim caixinha orientação e plano de ação */
+
+
+
+
+
+/* cards */
+
+.skills{
+    padding: 70px 85px 0;
+    /* width: 95%;
+    font-size: 16px;
+    max-width: 43.753m;
+    margin: 1em auto;
+    margin-top: 65px;
+    background-color: #fff;
+    padding: 1.9em 1.5em;
+    box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+    border-radius: 0.6em;
+    margin-top: 2em;  */
+   
+}
+
+.skills h3{
+    font-size: 35px;
+}
+
+.skills .skill-items{
+    display: flex;
+    margin-top: 70px;
+    gap: 30px;
+}
+
+.skills .skill-items .item{
+    background-color: #deebee;
+    width: 25%;
+    border-radius: 10px;
+    padding: 34px;
+    border-bottom: 4px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skills .skill-items .item:hover{
+    border-color: #006141;
+}
+
+.skills .skill-items .item .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+}
+
+.skills .skill-items .item .icon i{
+    font-size: 26px;
+    color: #006b6a;
+}
+
+.skills .skill-items .item h4,
+.portfolio .portfo-items .item .info h4{
+    font-size: 18px;
+}
+
+.skills .skill-items .item p{
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1c1e53;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    
+
+    .skills .skill-items{
+        gap: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .skills .skill-items .item{
+        width: 49%;
+    }
+
+    .skills h3
+    {
+        font-size: 28px;
+    }
+
+   
+.item {
+        font-size: 20px;
+    }
+
+    .item p{
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 992px) { 
+
+   .item{
+        width: 48%;
+    }
+
+   
+}
+
+
+@media screen and (max-width: 576px) {
+    
+    .skills .skill-items .item{
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+    
+    .skills{
+        padding: 65px 42px 0;
+    }
+
+    .skills .skill-items{
+        gap: 8px;
+    }
+
+}
+
+/* fim cards */
