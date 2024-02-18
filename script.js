@@ -144,6 +144,13 @@ const updateBalance = () => {
     let totalBalance = tempAmount - totalExpenses;
     balanceValue.innerText = totalBalance.toFixed(2);
 
+    // Verificar se o saldo é menor ou igual a 0 e alterar a cor correspondente
+    if (totalBalance <= 0) {
+        balanceValue.style.color = "red"; // Definir a cor do saldo como vermelha
+    } else {
+        balanceValue.style.color = ""; // Resetar a cor do saldo se for positivo
+    }
+
     // Verifica o saldo e atualiza a mensagem do plano de ação
     if (totalBalance < 0) {
         let expenseToRemove = findExpenseToRemove(totalExpenses, listItems);
@@ -186,8 +193,6 @@ const updateBalance = () => {
         balanceValue.style.color = "";
     }
 };
-
-
 
 // Função para atualizar as orientações
 const updateSuggestions = () => {
@@ -338,10 +343,10 @@ window.addEventListener('scroll', function () {
     }
 });
 
-//Fim do codígo da animação de Inicio
+// Fim do codígo da animação de Inicio 
 
 
-// Função para baixar o relatório
+// Função para baixar o relatório txt
 const downloadReport = () => {
     // Obtém todas as informações necessárias
     const totalAmountValue = parseFloat(amount.innerText);
@@ -389,3 +394,56 @@ const downloadReport = () => {
 // Cria um botão para baixar o relatório
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
+
+
+// fim da Função para baixar o relatório txt
+
+
+
+
+// // Função para baixar o relatório em PDF
+// const downloadReportPDF = () => {
+//     const totalAmountValue = parseFloat(amount.innerText);
+//     const expenditureTotal = parseFloat(expenditureValue.innerText);
+//     const balanceTotal = parseFloat(balanceValue.innerText);
+//     const expenses = Array.from(document.querySelectorAll(".sublist-content")).map(item => {
+//         return `${item.querySelector(".product").innerText}: ${item.querySelector(".amount").innerText}`;
+//     });
+//     const guidance = suggestions.innerText;
+//     const actionPlan = planodeacaoContent.innerText;
+
+//     // Instancia um novo objeto jsPDF
+//     const doc = new jsPDF(); // Certifique-se de que jsPDF está definido corretamente
+
+//     // Define a posição inicial do texto
+//     let yPos = 10;
+
+//     // Adiciona as informações ao documento PDF
+//     doc.text(`Orçamento Total: R$ ${totalAmountValue.toFixed(2)}`, 10, yPos);
+//     yPos += 10;
+//     doc.text("Lista de Despesas:", 10, yPos);
+//     yPos += 10;
+//     expenses.forEach((expense, index) => {
+//         doc.text(expense, 10, yPos + (index * 10));
+//     });
+//     yPos += expenses.length * 10 + 10;
+//     doc.text(`Total de Despesas: R$ ${expenditureTotal.toFixed(2)}`, 10, yPos);
+//     yPos += 10;
+//     doc.text(`Saldo: R$ ${balanceTotal.toFixed(2)}`, 10, yPos);
+//     yPos += 20;
+//     doc.text("Orientações:", 10, yPos);
+//     yPos += 10;
+//     doc.text(guidance, 10, yPos);
+//     yPos += (guidance.split('\n').length + 1) * 10;
+//     doc.text("Plano de Ação:", 10, yPos);
+//     yPos += 10;
+//     doc.text(actionPlan, 10, yPos);
+
+//     // Baixa o documento PDF com o nome 'relatorio_despesas.pdf'
+//     doc.save("relatorio_despesas.pdf");
+// };
+
+// // Adicione um event listener para o botão de download
+// const downloadButton = document.getElementById("downloadButton");
+// downloadButton.addEventListener("click", downloadReportPDF);
+
