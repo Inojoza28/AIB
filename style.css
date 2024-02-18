@@ -503,7 +503,7 @@ a{
     color: #0e0f16;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 576px) {
     footer .socials i{
         font-size: 33px;
     }
@@ -511,6 +511,8 @@ a{
         font-size: 13px;
     }
 }
+
+/* 720 */
 
 /* fim footer */
 
@@ -699,3 +701,33 @@ a{
 }
 
 /* fim cards */
+
+
+
+/* Adicione este bloco de estilo no seu arquivo de estilos CSS ou na tag <style> no cabeçalho do seu HTML */
+.download-button {
+    margin: 0 auto; /* Centraliza horizontalmente */
+    display: block; /* Garante que o botão ocupe toda a largura disponível */
+    padding: 10px 20px; /* padding interno do botão */
+    background-color: #4CAF50; /* cor de fundo do botão */
+    color: white; /* cor do texto do botão */
+    border: none; /* remove a borda do botão */
+    border-radius: 5px; /* borda arredondada */
+    cursor: pointer; /* cursor do mouse em forma de mão */
+    font-size: 16px; /* tamanho da fonte */
+}
+
+.download-button:hover {
+    background-color: #45a049; /* cor de fundo do botão ao passar o mouse */
+}
+
+/* Media query para telas menores que 600px de largura */
+@media screen and (max-width: 600px) {
+    .download-button {
+        font-size: 14px; /* Reduz o tamanho da fonte para telas menores */
+        padding: 8px 16px; /* Ajusta o padding interno do botão */
+    }
+}
+
+
+
