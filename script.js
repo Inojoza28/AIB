@@ -169,8 +169,6 @@ const updateBalance = () => {
     }
 };
 
-
-
 // Função para atualizar as orientações
 const updateSuggestions = () => {
     let totalExpenses = parseFloat(expenditureValue.innerText);
@@ -321,27 +319,3 @@ window.addEventListener('scroll', function () {
 });
 
 //Fim do codígo da animação de Inicio
-
-
-
-// // Array de frases
-// var frases = [
-//     "A liberdade financeira não é a ausência de dívidas, mas a capacidade de viver a vida que você deseja. <br><br> - Grant Sabatier",
-//     "Planejar o futuro não é adivinhar o que vai acontecer, mas criar o que você deseja que aconteça. <br><br> - Peter Drucker",
-//     "Cada centavo que você economiza hoje é um centavo que você não precisa trabalhar para ganhar amanhã. <br><br> - J. L. Collins",
-//     "O sucesso é a soma de pequenos esforços repetidos dia após dia. - Robert Collier"
-// ];
-
-// function escolherFrase() {
-//     var index = Math.floor(Math.random() * frases.length);
-//     return frases[index];
-// }
-
-// function atualizarFrase() {
-//     var frase = escolherFrase();
-//     document.getElementById("frase").innerHTML = frase;
-// }
-
-// window.onload = atualizarFrase;
-
-// // fim do Array de frases
