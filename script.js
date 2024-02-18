@@ -80,12 +80,18 @@ const modifyElement = (element, edit = false) => {
         productTitle.value = parentText;
         userAmount.value = parentAmount.toFixed(2);
         disableButtons(true);
+        
+        // Habilitar os botões de edição após 4 segundos
+        setTimeout(() => {
+            disableButtons(false);
+        }, 4000); // 3000 milissegundos = 4 segundos
     }
 
     parentDiv.remove();
     updateBalance();
     updateSuggestions();
 };
+
 
 // Criar função de lista
 const listCreator = (expenseName, expenseValue) => {
@@ -165,9 +171,23 @@ const updateBalance = () => {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
             planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} R$ cada.`;
+            // Alterar a cor do saldo para vermelho
+            balanceValue.style.color = "#FFCF04";
         }
+    } else if (listItems.length <= 1) {
+        planodeacaoContent.innerText = `Economize R$ ${tempAmount * 0.2} (20% do seu orçamento inicial) para garantir sua segurança financeira.`;
+        suggestions.innerText = "";
+        // Resetar a cor do saldo se não estiver nos últimos 20%
+        balanceValue.style.color = "";
+    } else {
+        planodeacaoContent.innerText = "Continue controlando seus gastos!";
+        suggestions.innerText = "";
+        // Resetar a cor do saldo se não estiver nos últimos 20%
+        balanceValue.style.color = "";
     }
 };
+
+
 
 // Função para atualizar as orientações
 const updateSuggestions = () => {
@@ -319,3 +339,4 @@ window.addEventListener('scroll', function () {
 });
 
 //Fim do codígo da animação de Inicio
+
