@@ -345,9 +345,14 @@ window.addEventListener('scroll', function () {
 
 // Fim do codígo da animação de Inicio 
 
-
 // Função para baixar o relatório txt
 const downloadReport = () => {
+    // Verifica se o orçamento foi definido
+    if (tempAmount === 0) {
+        alert("Por favor, defina o orçamento antes de baixar o relatório.");
+        return;
+    }
+
     // Obtém todas as informações necessárias
     const totalAmountValue = parseFloat(amount.innerText);
     const expenditureTotal = parseFloat(expenditureValue.innerText);
@@ -359,11 +364,11 @@ const downloadReport = () => {
     const actionPlan = planodeacaoContent.innerText;
 
     // Formata as informações em um único texto
-    let reportContent = `Orçamento Total: ${totalAmountValue.toFixed(2)}\n\n`;
+    let reportContent = `Orçamento Total: R$ ${totalAmountValue.toFixed(2)}\n\n`;
     reportContent += "Lista de Despesas:\n";
     reportContent += expenses.join("\n");
-    reportContent += `\n\nTotal de Despesas: ${expenditureTotal.toFixed(2)}\n`;
-    reportContent += `Saldo: ${balanceTotal.toFixed(2)}\n\n`;
+    reportContent += `\n\nTotal de Despesas: R$ ${expenditureTotal.toFixed(2)}\n`;
+    reportContent += `Saldo: R$ ${balanceTotal.toFixed(2)}\n\n`;
     reportContent += "Orientações:\n" + guidance + "\n\n";
     reportContent += "Plano de Ação:\n" + actionPlan;
 
@@ -395,8 +400,6 @@ const downloadReport = () => {
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
 
-
-// fim da Função para baixar o relatório txt
 
 
 
