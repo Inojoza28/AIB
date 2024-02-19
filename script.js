@@ -250,6 +250,8 @@ checkAmountButton.addEventListener("click", () => {
 });
 
 
+
+
 //Começo do codígo da animação de Inicio
 
 particlesJS("particles", {
@@ -345,6 +347,8 @@ window.addEventListener('scroll', function () {
 
 // Fim do codígo da animação de Inicio 
 
+
+
 // Função para baixar o relatório txt
 const downloadReport = () => {
     // Verifica se o orçamento foi definido
@@ -365,7 +369,7 @@ const downloadReport = () => {
 
     // Formata as informações em um único texto
     let reportContent = `Orçamento Total: R$ ${totalAmountValue.toFixed(2)}\n\n`;
-    reportContent += "Lista de Despesas:\n";
+    reportContent += "Lista de Despesas:\n\n";
     reportContent += expenses.join("\n");
     reportContent += `\n\nTotal de Despesas: R$ ${expenditureTotal.toFixed(2)}\n`;
     reportContent += `Saldo: R$ ${balanceTotal.toFixed(2)}\n\n`;
@@ -399,8 +403,6 @@ const downloadReport = () => {
 // Cria um botão para baixar o relatório
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
-
-
 
 
 
