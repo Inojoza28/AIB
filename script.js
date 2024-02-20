@@ -180,6 +180,10 @@ const updateBalance = () => {
             planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} R$ cada.`;
             // Alterar a cor do saldo para amarelo
             balanceValue.style.color = "#FFCF04";
+
+            // Limpar a caixa de entrada de despesas quando estiver nos últimos 20% do orçamento
+            productTitle.value = "";
+            userAmount.value = "";
         }
     } else if (listItems.length <= 1) {
         planodeacaoContent.innerText = `Economize R$ ${tempAmount * 0.2} (20% do seu orçamento inicial) para garantir sua segurança financeira.`;
@@ -193,6 +197,7 @@ const updateBalance = () => {
         balanceValue.style.color = "";
     }
 };
+
 
 // Função para atualizar as orientações
 const updateSuggestions = () => {
