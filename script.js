@@ -177,7 +177,7 @@ const updateBalance = () => {
         if (tempAmount >= 150) {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
-            planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} R$ cada.`;
+            planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} R$ cada. \n \n  1. Antes de parcelar, avalie sua capacidade financeira e evite múltiplas compras parceladas. \n \n  2. Além disso, é importante ler atentamente os termos do parcelamento para evitar custos adicionais. \n \n O parcelamento pode ser útil, mas é crucial evitar o endividamento excessivo e manter controle financeiro.`;
             // Alterar a cor do saldo para amarelo
             balanceValue.style.color = "#FFCF04";
 
@@ -222,7 +222,7 @@ const updateSuggestions = () => {
 
     let twentyPercent = tempAmount * 0.2;
     if (totalExpenses >= tempAmount - twentyPercent) {
-        suggestions.innerText = "Estamos nos últimos 20% do seu orçamento. Recomendamos um controle ainda mais rigoroso dos gastos para garantir uma melhor estabilidade financeira.";
+        suggestions.innerText = "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Reserve um tempo mensal para revisar seus gastos, especialmente os últimos 20% do seu orçamento. Isso ajudará a entender seus hábitos de consumo e tomar decisões mais conscientes. \n \n Planejar suas despesas mensais ajuda a antecipar gastos futuros e garantir que seus últimos 20% de orçamento cubram necessidades essenciais, evitando gastos desnecessários.";
 
         if (totalExpenses > totalBalance && tempAmount >= 150) {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
