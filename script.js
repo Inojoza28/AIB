@@ -73,24 +73,26 @@ const disableButtons = (bool) => {
 
 // Função modificar elementos da lista
 const modifyElement = (element, edit = false) => {
+    // Obtém o elemento pai do botão (o item da lista)
     let parentDiv = element.parentElement;
+    // Obtém o valor da despesa atual
     let parentAmount = parseFloat(parentDiv.querySelector(".amount").innerText);
+    // Se o parâmetro 'edit' for verdadeiro, significa que estamos editando o elemento
     if (edit) {
+        // Obtém o nome da despesa atual
         let parentText = parentDiv.querySelector(".product").innerText;
+        // Define os valores dos campos de entrada como o nome e o valor da despesa atual
         productTitle.value = parentText;
         userAmount.value = parentAmount.toFixed(2);
-        disableButtons(true);
-        
-        // Habilitar os botões de edição após 4 segundos
-        setTimeout(() => {
-            disableButtons(false);
-        }, 4000); // 3000 milissegundos = 4 segundos
     }
 
+    // Remove o elemento da lista
     parentDiv.remove();
+    // Atualiza o saldo e as sugestões exibidas na página
     updateBalance();
     updateSuggestions();
 };
+
 
 
 // Criar função de lista
@@ -408,6 +410,3 @@ const downloadReport = () => {
 // Cria um botão para baixar o relatório
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
-
-
-
