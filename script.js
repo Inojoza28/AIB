@@ -84,8 +84,6 @@ const modifyElement = (element, edit = false) => {
         // Define os valores dos campos de entrada como o nome e o valor da despesa atual
         productTitle.value = parentText;
         userAmount.value = parentAmount.toFixed(2);
-        // Coloca o foco no campo de entrada do título da despesa
-        productTitle.focus();
     }
 
     // Remove o elemento da lista
