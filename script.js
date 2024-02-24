@@ -84,6 +84,8 @@ const modifyElement = (element, edit = false) => {
         // Define os valores dos campos de entrada como o nome e o valor da despesa atual
         productTitle.value = parentText;
         userAmount.value = parentAmount.toFixed(2);
+        // Coloca o foco no campo de entrada do título da despesa
+        productTitle.focus();
     }
 
     // Remove o elemento da lista
@@ -92,7 +94,6 @@ const modifyElement = (element, edit = false) => {
     updateBalance();
     updateSuggestions();
 };
-
 
 
 // Criar função de lista
@@ -229,7 +230,6 @@ const updateSuggestions = () => {
         if (totalExpenses > totalBalance && tempAmount >= 150) {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
-            // let suggestionText = `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} cada.`;
 
             let existingSuggestions = suggestions.innerText;
             if (existingSuggestions !== "") {
