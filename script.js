@@ -178,7 +178,7 @@ const updateBalance = () => {
         if (tempAmount >= 150) {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
-            planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de ${installmentAmount} R$ cada. \n \n  1. Antes de parcelar, avalie sua capacidade financeira e evite múltiplas compras parceladas. \n \n  2. Além disso, é importante ler atentamente os termos do parcelamento para evitar custos adicionais. \n \n O parcelamento pode ser útil, mas é crucial evitar o endividamento excessivo e manter controle financeiro.`;
+            planodeacaoContent.innerText = `Você está nos últimos 20% do seu orçamento. \n \n • Você pode parcelar suas despesas em ${numberOfInstallments} vezes de R$ ${installmentAmount} cada. \n \n  1. Antes de parcelar, avalie sua capacidade financeira e evite múltiplas compras parceladas. \n \n  2. Além disso, é importante ler atentamente os termos do parcelamento para evitar custos adicionais. \n \n O parcelamento pode ser útil, mas é crucial evitar o endividamento excessivo e manter controle financeiro.`;
             // Alterar a cor do saldo para amarelo
             balanceValue.style.color = "#FFCF04";
 
@@ -356,55 +356,51 @@ window.addEventListener('scroll', function () {
 
 // Função para baixar o relatório txt
 const downloadReport = () => {
-    // Verifica se o orçamento foi definido
     if (tempAmount === 0) {
         alert("Por favor, defina o orçamento antes de baixar o relatório.");
         return;
     }
 
-    // Obtém todas as informações necessárias
+    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const currentDate = new Date();
+    const currentMonth = months[currentDate.getMonth()];
+
     const totalAmountValue = parseFloat(amount.innerText);
     const expenditureTotal = parseFloat(expenditureValue.innerText);
     const balanceTotal = parseFloat(balanceValue.innerText);
     const expenses = Array.from(document.querySelectorAll(".sublist-content")).map(item => {
-        return `${item.querySelector(".product").innerText}: ${item.querySelector(".amount").innerText}`;
+        const product = item.querySelector(".product").innerText;
+        const amount = parseFloat(item.querySelector(".amount").innerText);
+        return `${product}: R$ ${amount.toFixed(2)}`;
     });
     const guidance = suggestions.innerText;
     const actionPlan = planodeacaoContent.innerText;
 
-    // Formata as informações em um único texto
-    let reportContent = `Orçamento Total: R$ ${totalAmountValue.toFixed(2)}\n\n`;
-    reportContent += "Lista de Despesas:\n\n";
-    reportContent += expenses.join("\n");
-    reportContent += `\n\nTotal de Despesas: R$ ${expenditureTotal.toFixed(2)}\n`;
-    reportContent += `Saldo: R$ ${balanceTotal.toFixed(2)}\n\n`;
-    reportContent += "Orientações:\n" + guidance + "\n\n";
-    reportContent += "Plano de Ação:\n" + actionPlan;
+    let reportContent = `RELATÓRIO DE DESPESAS (AIB) - ${currentMonth}\n\n`;
+    reportContent += "------------------------------\n\n";
+    reportContent += `*Orçamento Total:* R$ ${totalAmountValue.toFixed(2)}\n\n`;
+    reportContent += "*Lista de Despesas:*\n\n";
+    reportContent += `${expenses.join("\n")}\n\n`;
+    reportContent += `*Total de Despesas:* R$ ${expenditureTotal.toFixed(2)}\n`;
+    reportContent += `*Saldo:* R$ ${balanceTotal.toFixed(2)}\n\n`;
+    reportContent += "*Orientações:*\n\n";
+    reportContent += `${guidance}\n\n`;
+    reportContent += "*Plano de Ação:*\n\n";
+    reportContent += `${actionPlan}`;
 
-    // Cria um objeto Blob com o conteúdo do relatório
     const blob = new Blob([reportContent], { type: "text/plain" });
-
-    // Cria um link temporário para o Blob
     const url = window.URL.createObjectURL(blob);
 
-    // Cria um elemento <a> temporário
     const a = document.createElement("a");
     a.href = url;
-    a.download = "relatorio_despesas.txt";
+    a.download = `relatorio_despesas_${currentMonth}.txt`;
 
-    // Anexa o elemento <a> ao documento
     document.body.appendChild(a);
-
-    // Clica no elemento <a> para iniciar o download
     a.click();
-
-    // Remove o elemento <a> do documento
     document.body.removeChild(a);
-
-    // Limpa o objeto URL
     window.URL.revokeObjectURL(url);
 };
 
-// Cria um botão para baixar o relatório
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
+
