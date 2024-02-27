@@ -404,3 +404,13 @@ const downloadReport = () => {
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
 
+// FIm da Função para baixar o relatório txt
+
+
+
+
+window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q9DX5FMXW7');
