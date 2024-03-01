@@ -187,7 +187,7 @@ const updateBalance = () => {
             userAmount.value = "";
         }
     } else if (listItems.length <= 1) {
-        planodeacaoContent.innerText = `Economize R$ ${tempAmount * 0.2} (20% do seu orçamento inicial) para garantir sua segurança financeira.`;
+        planodeacaoContent.innerText = `Economize R$ ${(tempAmount * 0.2).toFixed(2)} (20% do seu orçamento inicial) para garantir sua segurança financeira.`;
         suggestions.innerText = "";
         // Resetar a cor do saldo se não estiver nos últimos 20%
         balanceValue.style.color = "";
@@ -253,7 +253,6 @@ checkAmountButton.addEventListener("click", () => {
     let expenditure = parseFloat(userAmount.value);
     listCreator(productTitle.value, expenditure.toFixed(2));
 });
-
 
 
 
@@ -407,7 +406,7 @@ downloadButton.addEventListener("click", downloadReport);
 // FIm da Função para baixar o relatório txt
 
 
-
+// Google Analytics
 
 window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
