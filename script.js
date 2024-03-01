@@ -406,6 +406,7 @@ downloadButton.addEventListener("click", downloadReport);
 // FIm da Função para baixar o relatório txt
 
 
+
 // Google Analytics
 
 window.dataLayer = window.dataLayer || [];
