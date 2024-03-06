@@ -442,11 +442,11 @@ header .info-text .scroll::before{
     }
 
     header .info-text h3{
-        font-size: 1.1rem;
+        font-size: 1.0rem;
     }
 
     header .info-text p{
-        font-size: 1.1rem;
+        font-size: 1.0rem;
     }
 
     #about .card{
