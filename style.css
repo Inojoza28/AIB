@@ -731,7 +731,7 @@ a{
 
 @media screen and (max-width: 600px) {
     header .info-text h1 {
-        font-size: 4.3rem;
+        font-size: 4.0rem;
         font-weight: 500;
         font-family: 'Ubuntu';
     }
@@ -747,7 +747,7 @@ a{
 @media screen and (max-width: 992px) { 
 
     header .info-text h1 {
-        font-size: 4.3rem;
+        font-size: 4.0rem;
         font-weight: 500;
         font-family: 'Ubuntu';
     }
