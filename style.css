@@ -794,6 +794,11 @@ a{
     padding: 10px;
     box-sizing: border-box;
     outline: none;
+    color: #000;
+}
+
+#calc-display:focus {
+    color: #000; /* Mantém a cor dos números como preto quando o campo está focado */
 }
 
 .buttons {
