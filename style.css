@@ -867,5 +867,8 @@ a{
         width: 54px;
         height: 55px;
     }
+    #calc-display {
+        color: #000; /* Altera a cor dos números para preto */
+    }
 
 }
