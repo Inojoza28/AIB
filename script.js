@@ -420,8 +420,6 @@ window.dataLayer = window.dataLayer || [];
 
 // Calculadora
 
-// Calculadora
-
 // Obtém o elemento de exibição da calculadora
 const display = document.getElementById("calc-display");
 // Obtém todos os botões da calculadora
@@ -498,3 +496,5 @@ window.addEventListener('scroll', function () {
         scrollTopButton.style.display = 'none';
     }
 });
+
+// Fim Calculadora
