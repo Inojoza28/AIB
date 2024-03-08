@@ -795,11 +795,11 @@ a{
     padding: 10px;
     box-sizing: border-box;
     outline: none;
-    color: #000 !important;
+    color: #000;
 }
 
 #calc-display:focus {
-    color: #000 !important; /* Mantém a cor dos números como preto quando o campo está focado */
+    color: #000; /* Mantém a cor dos números como preto quando o campo está focado */
 }
 
 .buttons {
@@ -877,5 +877,12 @@ a{
         color: #000; /* Altera a cor dos números para preto */
     
     }
+    .digit, .function{
+        color: #000;
+    }
 
+}
+
+.digit, .function{
+    color: #000;
 }
