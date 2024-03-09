@@ -868,7 +868,7 @@ a{
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
 
     #toggle-calculator {
         width: 54px;
