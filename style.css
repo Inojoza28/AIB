@@ -882,12 +882,12 @@ a{
         color: #000;
     }
     #calculator {
-        width: 260px;
+        width: 262px;
         font-size: 16px;
     }
     
     .buttons {
-        grid-gap: 5px;
+        grid-gap: 7px;
         padding: 5px;
     }
     
@@ -895,12 +895,12 @@ a{
     .operator,
     .digit,
     .equal {
-        font-size: 16px;
+        font-size: 18px;
         height: 50px;
     }
     .function,
     .operator{
-        font-size: 17px;
+        font-size: 19px;
     }
 
 }
