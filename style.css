@@ -201,6 +201,11 @@ body{
         margin-bottom: 40px;
     }
 
+    .amount{
+        color: #414a67;
+        margin-left: -15px;
+    }
+
 }
 
 
@@ -493,7 +498,7 @@ footer .socials i{
 }
 
 footer .socials i:hover{
-    color: #303f9f;
+    color: #309f5b;
 }
 
 footer p{
@@ -867,6 +872,10 @@ a{
     display: block;
 }
 
+.digit, .function{
+    color: #000;
+}
+
 
 @media screen and (max-width: 720px) {
 
@@ -903,8 +912,4 @@ a{
         font-size: 19px;
     }
 
-}
-
-.digit, .function{
-    color: #000;
 }

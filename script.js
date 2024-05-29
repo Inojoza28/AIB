@@ -15,21 +15,43 @@ const planodeacaoContent = document.getElementById("planodeacao-content");
 let tempAmount = 0;
 let expenseCount = 0;
 
-// Encontrar a despesa de menor valor que, ao ser removida, tornaria o saldo positivo
+
+// Permitir adicionar orçamento pressionando Enter
+totalAmount.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        totalAmountButton.click();
+    }
+});
+
+// Permitir adicionar despesa pressionando Enter
+userAmount.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        checkAmountButton.click();
+    }
+});
+
+productTitle.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        checkAmountButton.click();
+    }
+});
+
+
+// Função para encontrar a despesa de menor valor que, ao ser removida, tornaria o saldo positivo
 const findExpenseToRemove = (totalExpenses, listItems) => {
     let removeExpense = null;
     let currentBalance = tempAmount - totalExpenses;
 
     // Ordenar as despesas em ordem crescente de valor
     let sortedExpenses = Array.from(listItems).sort((a, b) => {
-        let amountA = parseFloat(a.querySelector(".amount").innerText);
-        let amountB = parseFloat(b.querySelector(".amount").innerText);
+        let amountA = parseFloat(a.querySelector(".amount").innerText.replace("R$ ", ""));
+        let amountB = parseFloat(b.querySelector(".amount").innerText.replace("R$ ", ""));
         return amountA - amountB;
     });
 
     // Tentar remover as despesas uma a uma até encontrar a primeira que torne o saldo positivo
     for (let i = 0; i < sortedExpenses.length; i++) {
-        let currentExpense = parseFloat(sortedExpenses[i].querySelector(".amount").innerText);
+        let currentExpense = parseFloat(sortedExpenses[i].querySelector(".amount").innerText.replace("R$ ", ""));
         let newBalance = currentBalance + currentExpense;
         if (newBalance >= 0) {
             removeExpense = sortedExpenses[i].querySelector(".product").innerText;
@@ -53,7 +75,7 @@ totalAmountButton.addEventListener("click", () => {
         errorMessage.classList.remove("hide");
     } else {
         errorMessage.classList.add("hide");
-        amount.innerHTML = tempAmount.toFixed(2);
+        amount.innerHTML = `R$ ${tempAmount.toFixed(2)}`; // Adicionado o cifrão aqui
         updateBalance();
         totalAmount.value = "";
         planodeacaoContent.classList.remove("hide");
@@ -62,6 +84,7 @@ totalAmountButton.addEventListener("click", () => {
         suggestions.innerText = "";
     }
 });
+
 
 // Desative a função do botão editar e excluir
 const disableButtons = (bool) => {
@@ -76,7 +99,7 @@ const modifyElement = (element, edit = false) => {
     // Obtém o elemento pai do botão (o item da lista)
     let parentDiv = element.parentElement;
     // Obtém o valor da despesa atual
-    let parentAmount = parseFloat(parentDiv.querySelector(".amount").innerText);
+    let parentAmount = parseFloat(parentDiv.querySelector(".amount").innerText.replace("R$ ", ""));
     // Se o parâmetro 'edit' for verdadeiro, significa que estamos editando o elemento
     if (edit) {
         // Obtém o nome da despesa atual
@@ -104,7 +127,7 @@ const listCreator = (expenseName, expenseValue) => {
     let subListContent = document.createElement("div");
     subListContent.classList.add("sublist-content", "flex-space");
     list.appendChild(subListContent);
-    subListContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
+    subListContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">R$ ${expenseValue}</p>`;
     let editButton = document.createElement("button");
     editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
     editButton.style.fontSize = "1.2em";
@@ -133,17 +156,18 @@ const listCreator = (expenseName, expenseValue) => {
     }
 };
 
+
 // Função para atualizar o saldo e os valores relacionados
 const updateBalance = () => {
     let totalExpenses = 0;
     let listItems = document.querySelectorAll(".sublist-content");
     listItems.forEach((item) => {
-        totalExpenses += parseFloat(item.querySelector(".amount").innerText);
+        totalExpenses += parseFloat(item.querySelector(".amount").innerText.replace("R$ ", ""));
     });
-    expenditureValue.innerText = totalExpenses.toFixed(2);
+    expenditureValue.innerText = `R$ ${totalExpenses.toFixed(2)}`;
 
     let totalBalance = tempAmount - totalExpenses;
-    balanceValue.innerText = totalBalance.toFixed(2);
+    balanceValue.innerText = `R$ ${totalBalance.toFixed(2)}`;
 
     // Verificar se o saldo é menor ou igual a 0 e alterar a cor correspondente
     if (totalBalance <= 0) {
@@ -200,10 +224,12 @@ const updateBalance = () => {
 };
 
 
+
+
 // Função para atualizar as orientações
 const updateSuggestions = () => {
-    let totalExpenses = parseFloat(expenditureValue.innerText);
-    let totalBalance = parseFloat(balanceValue.innerText);
+    let totalExpenses = parseFloat(expenditureValue.innerText.replace("R$ ", ""));
+    let totalBalance = parseFloat(balanceValue.innerText.replace("R$ ", ""));
 
     if (totalBalance < 0) {
         suggestions.innerText = "Seu saldo ficou negativo. É hora de parar de gastar e revisar seus gastos para se ajustar ao orçamento.";
@@ -231,9 +257,9 @@ const updateSuggestions = () => {
 
             let existingSuggestions = suggestions.innerText;
             if (existingSuggestions !== "") {
-                suggestions.innerText += "\n" + suggestionText;
+                // suggestions.innerText += "\n" + `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de R$ ${installmentAmount} cada.`;
             } else {
-                suggestions.innerText = suggestionText;
+                // suggestions.innerText = `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de R$ ${installmentAmount} cada.`;
             }
         }
     } else if (totalExpenses >= tempAmount / 2) {
@@ -242,6 +268,7 @@ const updateSuggestions = () => {
         suggestions.innerText = "";
     }
 };
+
 
 // Event Listener para verificar e adicionar despesas
 checkAmountButton.addEventListener("click", () => {
@@ -364,12 +391,12 @@ const downloadReport = () => {
     const currentDate = new Date();
     const currentMonth = months[currentDate.getMonth()];
 
-    const totalAmountValue = parseFloat(amount.innerText);
-    const expenditureTotal = parseFloat(expenditureValue.innerText);
-    const balanceTotal = parseFloat(balanceValue.innerText);
+    const totalAmountValue = parseFloat(amount.innerText.replace("R$ ", ""));
+    const expenditureTotal = parseFloat(expenditureValue.innerText.replace("R$ ", ""));
+    const balanceTotal = parseFloat(balanceValue.innerText.replace("R$ ", ""));
     const expenses = Array.from(document.querySelectorAll(".sublist-content")).map(item => {
         const product = item.querySelector(".product").innerText;
-        const amount = parseFloat(item.querySelector(".amount").innerText);
+        const amount = parseFloat(item.querySelector(".amount").innerText.replace("R$ ", ""));
         return `${product}: R$ ${amount.toFixed(2)}`;
     });
     const guidance = suggestions.innerText;
@@ -403,7 +430,8 @@ const downloadReport = () => {
 const downloadButton = document.getElementById("downloadButton");
 downloadButton.addEventListener("click", downloadReport);
 
-// FIm da Função para baixar o relatório txt
+// Fim da Função para baixar o relatório txt
+
 
 
 
