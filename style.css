@@ -714,7 +714,7 @@ a{
     background-color: #4CAF50; /* cor de fundo do botão */
     color: white;
     border: none; 
-    border-radius: 12px; 
+    border-radius: 11px; 
     cursor: pointer; /* cursor do mouse em forma de mão */
     font-size: 16px; 
 }
@@ -727,7 +727,7 @@ a{
 @media screen and (max-width: 600px) {
     .download-button {
         font-size: 14px; 
-        padding: 8px 16px; 
+        padding: 9px 16px; 
     }
 }
 
