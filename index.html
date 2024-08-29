@@ -10,6 +10,7 @@
     crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q9DX5FMXW7"></script>
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dark.css">
     <link rel="stylesheet" href="style.css">
     <title>AIB</title>
 </head>
@@ -29,17 +30,25 @@
             <a href="#gerenciamento" class="scroll"><i class="bx bxs-down-arrow"></i></a>
         </div>
     </header>
-
+    
+    <!-- BOTÃO SCROLL TOP -->
     <button class="scroll-top" onclick="scrollToTop()">
         <i class='bx bxs-up-arrow'></i>
     </button>
+
+    <!-- BOTÃO DARK -->
+    <button id="dark-mode-toggle" class="dark-mode-toggle">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </button>
+    
 
     <div class="wrapper">
         <p class="gerenciamento" id="gerenciamento">Seu gerenciador financeiro pessoal</p>
         <div class="container">
             <div class="sub-container">
                 <div class="total-amount-container">
-                    <h3>Seu Orçamento (R$)</h3>
+                    <h3>Orçamento (R$)</h3>
                     <p class="hide error" id="budget-error">
                         O valor não pode estar vazio ou negativo!
                     </p>
@@ -50,7 +59,7 @@
                 </div>
 
                 <div class="user-amount-container">
-                    <h3>Suas Despesas</h3>
+                    <h3>Despesas</h3>
                     <p class="hide error" id="product-title-error">
                         Os valores não podem ficar vazios
                     </p>
@@ -217,6 +226,7 @@
 <script src="js/analytics.js"></script>
 <script src="js/inicio.js"></script>
 <script src="js/relatorio.js"></script>
+<script src="js/dark.js"></script>
 <script src="script.js" ></script>
 
 </body>
