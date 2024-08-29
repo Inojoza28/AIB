@@ -85,7 +85,7 @@ body{
 }
 
 .container input:focus{
-    border-color: #587ef4;
+    border-color: #052503;
 }
 
 .total-amount-container, .user-amount-container{
