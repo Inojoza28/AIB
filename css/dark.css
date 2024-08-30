@@ -45,7 +45,7 @@ body.dark-mode .planodeacao{
 }
 
 body.dark-mode .wrapper h3{
-    color: #e0e0e0;
+    color: #efefef;
 }
 
 body.dark-mode footer .socials{
@@ -102,7 +102,7 @@ body.dark-mode footer .socials i{
 }
 
 body.dark-mode .skills .skill-items .item:hover{
-    border-color: #04c081;
+    border-color: #4CAF50;
 }
 
 body.dark-mode footer .socials i:hover{
@@ -112,6 +112,9 @@ body.dark-mode .output-container{
     background-color: #3e8d55;
 }
 
+body.dark-mode .skills .skill-items .item .icon{
+    background-color: rgb(250, 250, 233);
+}
 /* estilização do botão dark */
 
 .dark-mode-toggle {
