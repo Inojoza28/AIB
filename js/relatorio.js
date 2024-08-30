@@ -21,7 +21,7 @@ const downloadReport = () => {
     const actionPlan = planodeacaoContent.innerText;
 
     let reportContent = `RELATÓRIO DE DESPESAS (AIB) - ${currentMonth}\n\n`;
-    reportContent += "------------------------------\n\n";
+    reportContent += "------------------------------------\n\n";
     reportContent += `*Orçamento Total:* R$ ${totalAmountValue.toFixed(2)}\n\n`;
     reportContent += "*Lista de Despesas:*\n\n";
     reportContent += `${expenses.join("\n")}\n\n`;
@@ -33,6 +33,10 @@ const downloadReport = () => {
 
     // Verificando se não há saldo anterior salvo
     if (!localStorage.getItem("previousBalance")) {
+        reportContent += "*Orientações:*\n\n";
+        reportContent += `${guidance}\n\n`;
+        reportContent += "*Plano de Ação:*\n\n";
+        reportContent += `${actionPlan}\n\n`;
         reportContent += "*Mensagem de Boas-Vindas:*\n\n";
         reportContent += "Bem-vindo ao AIB! Sucesso para sua nova jornada de controle financeiro.\n\n";
     } else {
@@ -52,9 +56,14 @@ const downloadReport = () => {
         reportContent += `Saldo anterior: R$ ${previousBalance.toFixed(2)}\n`;
         reportContent += `Saldo atual: R$ ${balanceTotal.toFixed(2)}\n`;
         reportContent += `Variação de Saldo: R$ ${balanceVariation.toFixed(2)}\n\n`;
+        reportContent += "*Orientações:*\n\n";
+        reportContent += `${guidance}\n\n`;
+        reportContent += "*Plano de Ação:*\n\n";
+        reportContent += `${actionPlan}\n\n`;
+        reportContent += `\n------------------------------\n\n`;
         reportContent += "*Mensagem Personalizada:*\n\n";
         reportContent += `${feedbackMessage}\n\n`;
-
+        reportContent += `\n------------------------------\n\n`;
         // Explicação para o usuário sobre a variação de saldo
         reportContent += "NOTA: A variação de saldo apresentada acima reflete a diferença entre o saldo registrado anteriormente e o saldo atual. Este recurso foi criado para ajudar você a monitorar suas finanças de maneira mais eficaz e alcançar suas metas financeiras.";
     }
