@@ -166,6 +166,7 @@ body.dark-mode .dark-mode-toggle .fa-sun {
 
 body.dark-mode #aib-benefits{
     background-color: #104a27e1;  
+    box-shadow:0 0.6em 1.2em rgba(255, 255, 255, 0.027);
 }
 
 body.dark-mode .card-header h2{
@@ -180,7 +181,7 @@ body.dark-mode .card-body p strong {
 }
 
 body.dark-mode .toggle-button{
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #4CAF50;
 }
 
