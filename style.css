@@ -215,8 +215,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #EAEAEA; /* Cor de fundo do cabeçalho */
-    color: white; /* Cor do texto */
+    background-color: #EAEAEA; 
+    color: white; 
    
   }
   
@@ -228,7 +228,7 @@ header {
   
   .social-icon {
     margin-left: 10px; /* Espaçamento entre os ícones */
-    color: white; /* Cor dos ícones */
+    color: white; 
   }
   
   /* Estilos para quando o mouse passa sobre os ícones */
@@ -466,7 +466,7 @@ header .info-text .scroll::before{
     font-size: 14px;
 }
 .info-text h1, .info-text p {
-    margin: 4px 5px; /* Ajuste de margem para deixar a frase mais próxima do título */
+    margin: 4px 5px; /* Ajusta a margem para deixar a frase mais próxima do título */
   }
 
 }
@@ -538,7 +538,7 @@ a{
 
 .orientations p {
     color: #414a67;
-    font-size: 16px; /* Ajuste do tamanho da fonte conforme necessário */
+    font-size: 16px; 
     line-height: 1.6; /* Espaçamento entre linhas */
 }
 
@@ -547,7 +547,7 @@ a{
     padding: 1.9em 1.2em;
     box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
     border-radius: 0.6em;
-    margin-top: 2em; /* Adicionando margem superior para separar das outras seções */
+    margin-top: 2em; 
 }
 
 .planodeacao h3 {
@@ -558,14 +558,14 @@ a{
 
 .planodeacao p {
     color: #414a67;
-    font-size: 16px; /* Ajuste do tamanho da fonte conforme necessário */
-    line-height: 1.6; /* Espaçamento entre linhas */
+    font-size: 16px; 
+    line-height: 1.6; 
 }
 
 .planodeacao .pln {
     color: #414a67cb;
-    font-size: 16px; /* Ajuste do tamanho da fonte conforme necessário */
-    line-height: 1.6; /* Espaçamento entre linhas */
+    font-size: 16px; 
+    line-height: 1.6; 
 }
 
 
@@ -710,7 +710,7 @@ a{
     margin: 0 auto; /* Centraliza horizontalmente */
     display: block; /* Garante que o botão ocupe toda a largura disponível */
     padding: 10px 20px; 
-    background-color: #4CAF50; /* cor de fundo do botão */
+    background-color: #4CAF50; 
     color: white;
     border: none; 
     border-radius: 11px; 
@@ -883,7 +883,7 @@ a{
         height: 55px;
     }
     #calc-display {
-        color: #000; /* Altera a cor dos números para preto */
+        color: #000; 
     
     }
     .digit, .function{
@@ -912,3 +912,134 @@ a{
     }
 
 }
+
+/* Estilos gerais da seção de benefícios */
+#aib-benefits {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
+    position: relative;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.card-header h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+    padding: 5px;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    font-size: 1.6em;
+    cursor: pointer;
+    color: #1f9402;
+}
+
+#toggle-icon {
+    font-weight: bold;
+}
+
+.card-body {
+    font-size: 1em;
+    color: #555;
+    display: none; /* Inicialmente escondido */
+}
+
+.card-body.open {
+    max-height: 500px; /* Ajuste conforme necessário */
+    opacity: 1; /* Totalmente visível */
+}
+
+.card-body p {
+    margin-bottom: 15px;
+}
+
+.card-body p strong {
+    color: #1f9402;
+}
+
+.card-footer {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.card-footer p {
+    color: #777;
+    font-style: italic;
+}
+/* Responsividade */
+@media (max-width: 858px) {
+    #aib-benefits {
+        max-width: 92%; /* Ajusta a largura para 90% da tela em dispositivos de até 768px */
+        padding: 15px;
+    }
+}
+@media (max-width: 768px) {
+    #aib-benefits {
+        max-width: 90%; /* Ajusta a largura para 90% da tela em dispositivos de até 768px */
+        padding: 15px;
+    }
+
+    .card-header {
+        /* flex-direction: column; */
+        align-items: flex-start;
+    }
+
+    .card-header h2 {
+        font-size: 1.2em;
+    }
+
+    .toggle-button {
+        font-size: 1.2em;
+    }
+
+    .card-body {
+        font-size: 0.9em;
+    }
+
+    .card-footer p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    #aib-benefits {
+        max-width: 89%; /* Ajusta a largura para 95% da tela em dispositivos de até 480px */
+        padding: 10px;
+    }
+
+    .card-header h2 {
+        font-size: 1.1em;
+    }
+
+    .toggle-button {
+        font-size: 1em;
+    }
+
+    .card-body {
+        font-size: 0.8em;
+    }
+
+    .card-body p {
+        margin-bottom: 16px;
+        font-size: 14px;
+    }
+
+    .card-footer p {
+        font-size: 0.8em;
+    }
+}
+

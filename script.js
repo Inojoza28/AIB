@@ -249,12 +249,22 @@ const updateSuggestions = () => {
 
     let twentyPercent = tempAmount * 0.2;
     if (totalExpenses >= tempAmount - twentyPercent) {
-        suggestions.innerText = "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Reserve um tempo mensal para revisar seus gastos, especialmente os últimos 20% do seu orçamento. Isso ajudará a entender seus hábitos de consumo e tomar decisões mais conscientes. \n \n Planejar suas despesas mensais ajuda a antecipar gastos futuros e garantir que seus últimos 20% de orçamento cubram necessidades essenciais, evitando gastos desnecessários.";
-
+        let messages = [
+            "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Reserve um tempo mensal para revisar seus gastos, especialmente os últimos 20% do seu orçamento. Isso ajudará a entender seus hábitos de consumo e tomar decisões mais conscientes. \n \n Planejar suas despesas mensais ajuda a antecipar gastos futuros e garantir que seus últimos 20% de orçamento cubram necessidades essenciais, evitando gastos desnecessários.",
+            "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do seu orçamento já gasto, é o momento de reavaliar suas prioridades. Foque nos gastos essenciais e evite qualquer compra desnecessária. Use os 20% restantes com sabedoria para garantir que você tenha flexibilidade para o que ainda precisa fazer.",
+            "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do orçamento já gasto, é hora de pisar no freio. Reavalie suas despesas, corte o que não for essencial e use os 20% restantes com muita cautela. Priorize o que realmente importa e guarde um pouco para imprevistos.",
+            "Os últimos 20% do seu orçamento chegaram.📊 \n \n  Seja cuidadoso ao fazer novas compras e planeje seu restante de orçamento para necessidades inevitáveis."
+            
+        ];
+    
+        // Seleciona uma mensagem aleatoriamente
+        let randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        suggestions.innerText = randomMessage;
+    
         if (totalExpenses > totalBalance && tempAmount >= 150) {
             let numberOfInstallments = Math.min(Math.floor(totalExpenses / totalBalance), 12);
             let installmentAmount = (totalExpenses / numberOfInstallments).toFixed(2);
-
+    
             let existingSuggestions = suggestions.innerText;
             if (existingSuggestions !== "") {
                 // suggestions.innerText += "\n" + `Você pode parcelar suas despesas em ${numberOfInstallments} vezes de R$ ${installmentAmount} cada.`;
@@ -266,8 +276,8 @@ const updateSuggestions = () => {
         suggestions.innerText = "Cuidado! Você já gastou mais da metade do seu orçamento. Continue acompanhando seus gastos para não exceder o limite.";
     } else {
         suggestions.innerText = "";
-    }
-};
+
+    }};
 
 
 // Event Listener para verificar e adicionar despesas
@@ -280,3 +290,9 @@ checkAmountButton.addEventListener("click", () => {
     let expenditure = parseFloat(userAmount.value);
     listCreator(productTitle.value, expenditure.toFixed(2));
 });
+
+
+
+
+
+

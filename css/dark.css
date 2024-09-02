@@ -26,12 +26,12 @@ input.dark-mode {
     border: 1px solid #444;
 }
 
-/* Estilos para o modo dark */
+
 body.dark-mode .total-amount-container, 
 body.dark-mode .user-amount-container {
-    background-color: #2E2E2E; /* Cor de fundo escura */
-    border-radius: 5px;    /* Cor da borda escura */
-    color: #E0E0E0;            /* Cor do texto */
+    background-color: #2E2E2E; 
+    border-radius: 5px;   
+    color: #E0E0E0;         
     box-shadow: 0 0.6em 1.2em rgb(255 255 255 / 6%);
 
 }
@@ -115,8 +115,8 @@ body.dark-mode .output-container{
 body.dark-mode .skills .skill-items .item .icon{
     background-color: rgb(250, 250, 233);
 }
-/* estilização do botão dark */
 
+/* ESTILIZAÇÃO DO BOTÃO DARK */
 .dark-mode-toggle {
     position: fixed;
     top: 20px;
@@ -158,4 +158,31 @@ body.dark-mode .dark-mode-toggle .fa-moon {
 
 body.dark-mode .dark-mode-toggle .fa-sun {
     display: block;
+}
+
+
+
+/* Benefícios do AI₿ */
+
+body.dark-mode #aib-benefits{
+    background-color: #102719;  
+}
+
+body.dark-mode .card-header h2{
+    color: #fffff4;
+}
+body.dark-mode .card-body p{
+    color: #fffff4;
+}
+
+body.dark-mode .card-body p strong {
+    color: #4CAF50;
+}
+
+body.dark-mode .toggle-button{
+    color: #4CAF50;
+}
+
+body.dark-mode .card-footer p{
+    color: #e2e2e2ab;
 }
