@@ -180,6 +180,7 @@ body.dark-mode .card-body p strong {
 }
 
 body.dark-mode .toggle-button{
+    font-size: 1.6rem;
     color: #4CAF50;
 }
 
