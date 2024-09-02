@@ -251,10 +251,10 @@ const updateSuggestions = () => {
     if (totalExpenses >= tempAmount - twentyPercent) {
         let messages = [
             "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Reserve um tempo mensal para revisar seus gastos, especialmente os últimos 20% do seu orçamento. Isso ajudará a entender seus hábitos de consumo e tomar decisões mais conscientes. \n \n Planejar suas despesas mensais ajuda a antecipar gastos futuros e garantir que seus últimos 20% de orçamento cubram necessidades essenciais, evitando gastos desnecessários.",
-            "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do seu orçamento já gasto, é o momento de reavaliar suas prioridades. Foque nos gastos essenciais e evite qualquer compra desnecessária. Use os 20% restantes com sabedoria para garantir que você tenha flexibilidade para o que ainda precisa fazer.",
-            "Estamos nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do orçamento já gasto, é hora de pisar no freio. Reavalie suas despesas, corte o que não for essencial e use os 20% restantes com muita cautela. Priorize o que realmente importa e guarde um pouco para imprevistos.",
-            "Os últimos 20% do seu orçamento chegaram.📊 \n \n  Seja cuidadoso ao fazer novas compras e planeje seu restante de orçamento para necessidades inevitáveis."
-            
+            "Você está nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do seu orçamento já gasto, é o momento de reavaliar suas prioridades. Foque nos gastos essenciais e evite qualquer compra desnecessária. Use os 20% restantes com sabedoria para garantir que você tenha flexibilidade para o que ainda precisa fazer.",
+            "Você está nos últimos 20% do seu orçamento. 📊 \n \n Com 80% do orçamento já gasto, é hora de pisar no freio. Reavalie suas despesas, corte o que não for essencial e use os 20% restantes com muita cautela. Priorize o que realmente importa e guarde um pouco para imprevistos.",
+            "Você está nos últimos 20% do seu orçamento. 📊 \n \n Agora é o momento ideal para revisar suas despesas recentes e priorizar gastos essenciais. Planeje com atenção para garantir que o restante do seu orçamento cubra apenas o necessário, evitando gastos desnecessários. Uma análise cuidadosa pode ajudar a ajustar seus planos e alcançar suas metas financeiras.",
+            "Você está nos últimos 20% do seu orçamento. 📊 \n \n Agora é o momento de priorizar suas despesas e revisar seus gastos. Foque em necessidades essenciais e evite compras impulsivas. Planeje com cuidado para garantir que esses últimos 20% sejam usados de forma eficiente e ajudem você a alcançar suas metas financeiras."
         ];
     
         // Seleciona uma mensagem aleatoriamente
