@@ -921,7 +921,7 @@ a{
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 0.6em 1.2em rgba(28, 0, 80, 0.06);
-    position: relative;
+    /* position: relative; */
 }
 
 .card-header {
