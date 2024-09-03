@@ -12,10 +12,9 @@ const toggleCalculatorButton = document.getElementById("toggle-calculator");
 // Adiciona um evento de clique a cada botão
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        // Verifica se o botão é um dígito ou operador
         if (button.classList.contains("digit") || button.classList.contains("operator")) {
-            // Substitui a divisão por ÷ e a multiplicação por x antes de adicionar ao visor
             let buttonText = button.textContent;
+
             if (buttonText === "÷") {
                 buttonText = "/";
             } else if (buttonText === "x") {
@@ -23,14 +22,16 @@ buttons.forEach(button => {
             }
             display.value += buttonText;
         } else if (button.classList.contains("equal")) {
-            // Se o botão for de igual, calcula o resultado da expressão
             try {
-                display.value = eval(display.value);
+                // Divide a expressão em partes e remove zeros à esquerda de cada número
+                const expression = display.value.replace(/(\d+\.?\d*)/g, function(match) {
+                    return parseFloat(match); // Remove zeros à esquerda convertendo para float
+                });
+                display.value = eval(expression);
             } catch (error) {
                 display.value = "Error";
             }
         } else if (button.classList.contains("function")) {
-            // Se o botão for de uma função especial, manipula a função
             handleFunction(button.id);
         }
     });
