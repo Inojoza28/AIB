@@ -69,6 +69,8 @@ toggleCalculatorButton.addEventListener("click", () => {
 window.addEventListener('scroll', function () {
     var scrollTopButton = document.querySelector('.scroll-top');
     var toggleCalculatorButton = document.getElementById('toggle-calculator');
+    var calculator = document.getElementById('calculator');
+
     if (this.window.pageYOffset > 200) {
         toggleCalculatorButton.classList.add('show');
         scrollTopButton.style.display = 'block';
@@ -76,6 +78,14 @@ window.addEventListener('scroll', function () {
         toggleCalculatorButton.classList.remove('show');
         scrollTopButton.style.display = 'none';
     }
+
+    // Verifica se o usuário rolou até o topo e se a calculadora está aberta
+    if (this.window.pageYOffset === 0 && calculator.style.display === "block") {
+        // Fecha a calculadora
+        calculator.style.display = "none";
+        toggleCalculatorButton.innerHTML = "<i class='bx bxs-calculator'></i>";
+    }
 });
+
 
 // Fim Calculadora
