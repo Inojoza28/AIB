@@ -65,7 +65,7 @@ const downloadReport = () => {
         reportContent += `${feedbackMessage}\n\n`;
         reportContent += `\n------------------------------\n\n`;
         // Explicação para o usuário sobre a variação de saldo
-        reportContent += "NOTA: A variação de saldo reflete a diferença entre o saldo anterior e o atual, facilitando o monitoramento financeiro e auxiliando no alcance de metas financeiras.";
+        reportContent += "📝 NOTA: A variação de saldo reflete a diferença entre o saldo anterior e o atual, facilitando o monitoramento financeiro e auxiliando no alcance de metas financeiras.";
     }
 
     // Salvando o saldo atual no Local Storage
