@@ -68,7 +68,7 @@ body{
 }
 
 .wrapper h3{
-    color: #363d55;
+    color: #2e3f36;
     font-weight: 500;
     margin-bottom: 0.6em;
 }
@@ -532,7 +532,7 @@ a{
 }
 
 .orientations h3 {
-    color: #363d55;
+    color: #2e3f36;
     font-weight: 500;
     margin-bottom: 0.6em;
 }
@@ -552,7 +552,7 @@ a{
 }
 
 .planodeacao h3 {
-    color: #363d55;
+    color: #2e3f36;
     font-weight: 500;
     margin-bottom: 0.6em;
 }
@@ -1043,4 +1043,3 @@ a{
         font-size: 0.8em;
     }
 }
-
