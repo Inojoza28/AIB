@@ -134,7 +134,9 @@ body.dark-mode .skills .skill-items .item .icon{
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
+    z-index: 1000; /* Garante que o botão fique sobre os outros elementos */
 }
+
 
 .dark-mode-toggle.show {
     opacity: 1;
@@ -187,4 +189,25 @@ body.dark-mode .toggle-button{
 
 body.dark-mode .card-footer p{
     color: #e2e2e2ab;
+}
+
+
+/* Relatórios de economia */
+
+
+body.dark-mode .report-section{
+    background: #141f15;
+}
+
+body.dark-mode #balanceVariation{
+    border-radius: 18px;
+    border: none;
+    background-color: #03110ab8;
+}
+
+body.dark-mode .report-section h3{
+    color: #f4f5f7;
+}
+body.dark-mode .report-section p{
+    color: #999999;
 }

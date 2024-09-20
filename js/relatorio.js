@@ -25,7 +25,7 @@ const downloadReport = () => {
     const guidance = suggestions.innerText;
     const actionPlan = planodeacaoContent.innerText;
 
-    let reportContent = `RELATÓRIO DE DESPESAS (AIB) - ${currentMonth} ${currentYear}\n\n`;
+    let reportContent = `RELATÓRIO DE DESPESAS (AIB) - ${currentMonth} ${currentYear}\n`;
     reportContent += "------------------------------------\n\n";
     reportContent += `*Orçamento Total:* ${totalAmountValue}\n\n`;
     reportContent += "*Lista de Despesas:*\n\n";
@@ -74,13 +74,22 @@ const downloadReport = () => {
         reportContent += "📝 NOTA: A variação de saldo reflete a diferença entre o saldo anterior e o atual, facilitando o monitoramento financeiro e auxiliando no alcance de metas financeiras.";
     }
 
-    // Salvando o saldo atual no Local Storage
-    localStorage.setItem("previousBalance", parseFloat(balanceValue.innerText.replace("R$ ", "")));
 
-// Salvando o histórico de saldos no Local Storage
+// Salvando o saldo atual, orçamento total e despesas no Local Storage
+localStorage.setItem("previousBalance", parseFloat(balanceValue.innerText.replace("R$ ", "")));
+localStorage.setItem("totalBudget", parseFloat(amount.innerText.replace("R$ ", "")));
+localStorage.setItem("totalExpenditure", parseFloat(expenditureValue.innerText.replace("R$ ", "")));
+
+// Salvando o histórico de saldos, orçamentos e despesas no Local Storage
 let balanceHistory = JSON.parse(localStorage.getItem("balanceHistory")) || [];
-balanceHistory.push({ date: new Date().toISOString(), balance: parseFloat(balanceValue.innerText.replace("R$ ", "")) });
+balanceHistory.push({ 
+    date: new Date().toISOString(), 
+    balance: parseFloat(balanceValue.innerText.replace("R$ ", "")),
+    totalBudget: parseFloat(amount.innerText.replace("R$ ", "")),
+    totalExpenditure: parseFloat(expenditureValue.innerText.replace("R$ ", ""))
+});
 localStorage.setItem("balanceHistory", JSON.stringify(balanceHistory));
+
 
     // Gerando o arquivo para download
     const blob = new Blob([reportContent], { type: "text/plain" });

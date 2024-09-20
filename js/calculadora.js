@@ -87,5 +87,4 @@ window.addEventListener('scroll', function () {
     }
 });
 
-
 // Fim Calculadora

@@ -564,7 +564,7 @@ a{
 }
 
 .planodeacao .pln {
-    color: #6a6a6ae0;
+    color: #777;
     font-size: 16px; 
     line-height: 1.6; 
 }
@@ -1010,14 +1010,14 @@ a{
     }
 
     .card-footer p {
-        font-size: 1.1em;
+        font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
     #aib-benefits {
-        max-width: 89%; /* Ajusta a largura para 95% da tela em dispositivos de até 480px */
-        padding: 10px;
+        max-width: 90%;
+        padding: 10px 20px;
     }
 
     .card-header h2 {
@@ -1038,6 +1038,261 @@ a{
     }
 
     .card-footer p {
-        font-size: 0.8em;
+        font-size: 14px;
     }
 }
+
+
+/* RELATÓRIOS DE ECONOMIA */
+
+.caixa {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+.report-section {
+    width: 420px; /* Aumentei levemente a largura */
+    min-height: 270px; /* Aumentei a altura mínima */
+    padding: 20px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.report-section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.report-section h3 {
+    font-size: 18px; /* Tamanho da fonte maior para melhor legibilidade */
+    margin-bottom: 10px;
+    color: #2e3f36;
+    border-bottom: 2px solid #4CAF50;
+    display: inline-block;
+    padding-bottom: 6px;
+}
+
+.report-section p {
+    font-size: 14px; /* Fonte um pouco maior */
+    margin-bottom: 20px;
+    line-height: 1.6; /* Aumentei o espaçamento entre linhas */
+    color: #555;
+    flex-grow: 1;
+}
+
+.button-report { /* Classe específica para os botões dentro das caixas */
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 15px; /* Fonte um pouco maior */
+    font-weight: bold;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-report:hover {
+    background-color: #45a049;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.button-report:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+/* Estilo para a variação de saldo */
+#balanceVariation {
+    font-size: 1.5em; /* Aumenta o tamanho da fonte para destacar o número */
+    font-weight: bold; /* Deixa o texto em negrito */
+    padding: 20px; /* Adiciona espaçamento interno */
+    border: 2px solid #ddd; /* Borda leve e discreta */
+    border-radius: 12px; /* Bordas mais arredondadas para um visual suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar destaque */
+    display: flex; /* Usa flexbox para alinhamento */
+    align-items: center; /* Alinha verticalmente ao centro */
+    justify-content: center; /* Alinha horizontalmente ao centro */
+    margin: 10px 0; /* Espaçamento ao redor para separação visual */
+    background-color: #f9f9f9; /* Fundo claro para contraste */
+    transition: background-color 0.3s, color 0.3s; /* Transições suaves para mudanças de cor */
+    min-width: 200px; /* Define um tamanho mínimo para a caixa */
+    min-height: 60px; /* Define uma altura mínima para manter o conteúdo centralizado */
+    text-align: center; /* Centraliza o texto dentro da caixa */
+}
+
+/* Cores específicas para variação positiva e negativa */
+#balanceVariation.green {
+    color: green;
+    background-color: #e6ffe6; /* Fundo suave para variação positiva */
+}
+
+#balanceVariation.red {
+    color: red;
+    background-color: #ffe6e6; /* Fundo suave para variação negativa */
+}
+
+
+/* LOADER */ 
+.report-section h3 {
+    position: relative; /* Necessário para o posicionamento absoluto do loader */
+}
+
+.loader {
+    position: absolute;
+    right: 20px; /* Posiciona o loader no canto direito */
+    top: 28%; /* Ajusta verticalmente */
+    transform: translateY(-50%); /* Centraliza verticalmente */
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.circle-3 {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(105.5deg, rgba(128, 233, 119, 0.404) 0%, rgba(128, 233, 119, 0.404) 100%);
+    animation-name: circle-3-animation;
+}
+
+.circle-4 {
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(103.3deg, rgb(63, 235, 114) 0%, rgb(63, 235, 114) 100%);
+    animation-name: circle-4-animation;
+}
+  
+  @keyframes circle-1-animation {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes circle-2-animation {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes circle-3-animation {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes circle-4-animation {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+/* FIM DO LOADER */ 
+
+@media (max-width: 1528px) {
+    .report-section {
+        width: 400px;
+    }
+    .button-report {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 1461px) {
+    .report-section {
+        width: 350px;
+    }
+    .button-report {
+    font-size: 14px;
+    }
+}
+@media (max-width: 1294px) {
+    .report-section {
+        width: 420px;
+    }
+}
+
+@media (max-width: 600px) {
+    .report-section {
+        padding: 15px;
+        width: 400px;
+    }
+    #balanceVariation{
+        font-size: 1.3em;
+    }    
+    .button-report {
+        padding: 9px 16px;
+        font-size: 14px;
+        font-weight: normal;
+    }
+    .caixa {
+        max-width: 85%;
+    }
+    .report-section h3{
+        font-size: 17px;
+    }
+    .circle-4 {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* FIM RELATÓRIOS DE ECONOMIA */
