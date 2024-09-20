@@ -48,21 +48,39 @@ const downloadReportBalance = () => {
     }
 
     const currentBalance = parseFloat(balanceValue.innerText.replace("R$ ", "").replace(",", ""));
-    let reportContent = "Relatório de Planejamento com base no Saldo (AIB Finance)\n\n";
-    reportContent += `Saldo Atual: R$ ${currentBalance.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n\n`;
+
+    let reportContent = "Relatório de Planejamento com Base no Saldo (AIB Finance)\n\n";
+    reportContent += `Saldo Atual: ${currentBalance.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+    reportContent += "----------------------------------------------\n\n";
 
     if (currentBalance < 1000) {
         const emergencyAmount = currentBalance * 0.20;
-        reportContent += `Como o saldo é menor que R$ 1000, sugerimos que você direcione 20% do saldo para o fundo de emergência:\n`;
-        reportContent += `Fundo de Emergência (20%): ${emergencyAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n\n`;
+        reportContent += `Como o seu saldo atual é menor que R$ 1.000, recomendamos um foco especial em segurança financeira.\n`;
+        reportContent += `Sugerimos que você direcione 20% do seu saldo para um Fundo de Emergência, o que ajuda a cobrir despesas imprevistas e garantir estabilidade financeira.\n\n`;
+        reportContent += `Fundo de Emergência (20% do Saldo): ${emergencyAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+        reportContent += "----------------------------------------------\n\n";
+        reportContent += "Dicas:\n";
+        reportContent += "- Mantenha este fundo acessível para cobrir emergências inesperadas.\n";
+        reportContent += "- Evite usar este fundo para despesas não essenciais.\n";
+        reportContent += "- Continue contribuindo para aumentar a segurança financeira.\n\n";
     } else {
         const saveAmount = currentBalance * 0.20;
         const investAmount = saveAmount * 0.60;
         const emergencyAmount = saveAmount * 0.40;
 
-        reportContent += `20% do saldo total: R$ ${saveAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
-        reportContent += `- 60% para Investimento: R$ ${investAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
-        reportContent += `- 40% para Fundo de Emergência: R$ ${emergencyAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n\n`;
+        reportContent += `Como o seu saldo é maior que R$ 1.000, sugerimos uma abordagem equilibrada entre investimentos e segurança financeira.\n\n`;
+        reportContent += `Recomendamos direcionar 20% do seu saldo para planejamento financeiro, que inclui uma combinação de investimento e fundo de emergência.\n\n`;
+        reportContent += `Detalhamento do Planejamento:\n\n`;
+        reportContent += `20% do Saldo Total: ${saveAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+        reportContent += `- Investimento (60% do Valor Economizado): ${investAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+        reportContent += `  Objetivo: Aumentar o patrimônio e buscar rendimentos maiores a longo prazo.\n\n`;
+        reportContent += `- Fundo de Emergência (40% do Valor Economizado): ${emergencyAmount.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}\n`;
+        reportContent += `  Objetivo: Proteger-se contra imprevistos financeiros e manter a segurança do orçamento.\n`;
+        reportContent += "----------------------------------------------\n\n";
+        reportContent += "Dicas:\n";
+        reportContent += "- Diversifique seus investimentos para equilibrar risco e retorno.\n";
+        reportContent += "- Revise regularmente o seu fundo de emergência para mantê-lo adequado às suas necessidades.\n";
+        reportContent += "- Busque orientações financeiras para otimizar seus investimentos.\n\n";
     }
 
     const blob = new Blob([reportContent], { type: "text/plain" });
@@ -98,4 +116,3 @@ totalAmountButton.addEventListener("click", () => {
         suggestions.innerText = "";
     }
 });
-
