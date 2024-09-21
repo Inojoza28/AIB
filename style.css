@@ -1184,8 +1184,8 @@ a{
 }
 
 .circle-4 {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     background: linear-gradient(103.3deg, rgb(63, 235, 114) 0%, rgb(63, 235, 114) 100%);
     animation-name: circle-4-animation;
 }
