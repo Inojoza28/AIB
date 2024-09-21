@@ -1,7 +1,7 @@
 /* MODO DARK */
 
 body.dark-mode {
-    background-color: #031b07;
+    background-color: #021205;
     color: #fffff4;
 }
 
@@ -10,7 +10,7 @@ body.dark-mode {
 }
 
 header.dark-mode{
-    background: linear-gradient(to bottom, #044C33, #115841, #216953, #031b07);
+    background: linear-gradient(to bottom, #044C33, #115841, #216953, #021205);
 }
 
 input.dark-mode {
