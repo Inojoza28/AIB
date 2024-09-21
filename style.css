@@ -1252,6 +1252,9 @@ a{
     .report-section {
         width: 400px;
     }
+    #balanceVariation{
+        font-size: 1.2em;
+    } 
     .button-report {
         padding: 10px 20px;
     }
@@ -1261,6 +1264,9 @@ a{
     .report-section {
         width: 350px;
     }
+    #balanceVariation{
+        font-size: 1.2em;
+    } 
     .button-report {
     font-size: 14px;
     }
@@ -1269,6 +1275,9 @@ a{
     .report-section {
         width: 420px;
     }
+    #balanceVariation{
+        font-size: 1.2em;
+    } 
 }
 
 @media (max-width: 600px) {
@@ -1277,7 +1286,7 @@ a{
         width: 400px;
     }
     #balanceVariation{
-        font-size: 1.3em;
+        font-size: 1.2em;
     }    
     .button-report {
         padding: 9px 16px;
