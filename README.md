@@ -30,10 +30,9 @@ AIB Finance é um gerenciador financeiro pessoal que ajuda você a controlar sua
 6. **Ative o Modo Escuro:** Clique no ícone de lua/sol para alternar entre os modos claro e escuro.
 
 ## Relatórios Disponíveis
-
 - **Relatório de Economia com Base no Orçamento Total:** Sugestões de economia baseadas no orçamento definido, com percentuais de alocação entre investimentos e fundo de emergência.
 - **Relatório de Economia com Base no Saldo Atual:** Recomendações de alocação financeira baseadas no saldo atual, com foco em investimentos e segurança financeira.
-- 
+  
 
 ## Contato
 
