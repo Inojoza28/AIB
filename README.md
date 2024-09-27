@@ -33,10 +33,7 @@ AIB Finance é um gerenciador financeiro pessoal que ajuda você a controlar sua
 
 - **Relatório de Economia com Base no Orçamento Total:** Sugestões de economia baseadas no orçamento definido, com percentuais de alocação entre investimentos e fundo de emergência.
 - **Relatório de Economia com Base no Saldo Atual:** Recomendações de alocação financeira baseadas no saldo atual, com foco em investimentos e segurança financeira.
-
-## Contribuição
-
-Contribuições são bem-vindas! Se você deseja melhorar o projeto, sinta-se à vontade para abrir issues ou enviar pull requests.
+- 
 
 ## Contato
 
