@@ -44,10 +44,6 @@ Contribuições são bem-vindas! Se você deseja melhorar o projeto, sinta-se à
 - **GitHub:** [Inojoza28](https://github.com/Inojoza28)
 - **Email:** carlosginojoza@gmail.com
 
-## Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ---
 
 AIB Finance ©2024 - Todos os direitos reservados.
